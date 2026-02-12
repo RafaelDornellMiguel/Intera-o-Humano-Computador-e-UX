@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IHC – Análise Heurística (Nielsen) | Projeto HTML/CSS/JS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <h1>IHC – Análise Heurística de Interfaces Digitais</h1>
+          <div class="subtitle">Atividade prática baseada nas 10 Heurísticas de Nielsen (60–90 min)</div>
+        </div>
+        <div class="row" style="gap:8px; flex:0 0 auto">
+          <button class="btn" id="start60">Timer 60′</button>
+          <button class="btn" id="start90">Timer 90′</button>
+          <span class="pill"><span>⏱️</span><span class="timer" id="timer">00:00:00</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid g-2">
+    <!-- Grupo -->
+    <section class="panel" id="grp">
+      <h2>1) Formação de Grupos</h2>
+      <div class="row">
+        <div>
+          <label>Nome do Grupo</label>
+          <input id="groupName" placeholder="Ex.: Equipe UX A" />
+        </div>
+        <div>
+          <label>Disciplina</label>
+          <input id="course" placeholder="Ex.: IHC / UX" />
+        </div>
+      </div>
+      <label>Nomes dos Integrantes (um por linha)</label>
+      <textarea id="members" placeholder="Nome 1&#10;Nome 2&#10;Nome 3"></textarea>
+      <div class="hr"></div>
+      <button class="btn brand" id="saveGrp">Salvar Grupo</button>
+      <span class="badge" id="grpSavedInfo" role="status" aria-live="polite"></span>
+    </section>
+
+    <!-- Interface -->
+    <section class="panel" id="iface">
+      <h2>2) Escolha da Interface</h2>
+      <label>Tipo de Interface</label>
+      <select id="ifaceType">
+        <option>Aplicativo de banco</option>
+        <option>Site de notícias</option>
+        <option>Plataforma de e-commerce</option>
+        <option>Aplicativo de transporte</option>
+        <option>Sistema acadêmico</option>
+        <option>Outra</option>
+      </select>
+      <label>Nome da Interface / Produto</label>
+      <input id="ifaceName" placeholder="Ex.: Portal do Aluno • App/WEB" />
+      <label>URL (se houver)</label>
+      <input id="ifaceURL" placeholder="https://..." />
+      <label>Tarefas simuladas (uma por linha)</label>
+      <textarea id="tasks" placeholder="Ex.: Emitir boleto&#10;Consultar notas&#10;Atualizar cadastro"></textarea>
+      <div class="hr"></div>
+      <button class="btn brand" id="saveIface">Salvar Interface</button>
+      <span class="badge" id="ifaceSavedInfo" role="status"></span>
+    </section>
+
+    <!-- Heurísticas -->
+    <section class="panel" id="heur">
+      <h2>3) Revisão das 10 Heurísticas de Nielsen</h2>
+      <div class="heurstics-cards" id="heurList"></div>
+      <div class="small muted">Fonte: Jakob Nielsen, “10 Usability Heuristics for User Interface Design”.</div>
+    </section>
+
+    <!-- Problemas -->
+    <section class="panel" id="issues">
+      <h2>4) Análise Heurística da Interface (Registre Problemas)</h2>
+      <div class="row">
+        <div>
+          <label>Heurística violada</label>
+          <select id="hSelect"></select>
+        </div>
+        <div>
+          <label>Severidade (0–4)</label>
+          <select id="severity">
+            <option value="0">0 – não é problema</option>
+            <option value="1">1 – cosmético</option>
+            <option value="2">2 – menor</option>
+            <option value="3">3 – maior</option>
+            <option value="4">4 – catástrofe</option>
+          </select>
+        </div>
+      </div>
+      <label>Descrição do Problema</label>
+      <textarea id="desc" placeholder="Explique claramente o que está errado ou confuso..."></textarea>
+      <label>Solução Proposta</label>
+      <textarea id="solution" placeholder="Sugira como melhorar (redesenho, texto, bloqueio, feedback, etc.)"></textarea>
+      <div class="row" style="margin-top:.4rem">
+        <button class="btn brand" id="addIssue">Adicionar Problema</button>
+        <button class="btn" id="clearForm">Limpar Formulário</button>
+      </div>
+      <div class="hr"></div>
+      <div class="list" id="issuesList"></div>
+    </section>
+
+    <!-- Top 3 -->
+    <section class="panel" id="top3panel">
+      <h2>5) Selecione os 3 Problemas mais críticos</h2>
+      <div class="small muted">Dica: priorize severidade alta (3–4) e impacto em tarefas principais.</div>
+      <div id="top3" class="top3"></div>
+      <div class="hr"></div>
+      <button class="btn accent" id="genSlides">Gerar Slides (2–3 min)</button>
+      <button class="btn" id="genReport">Gerar Relatório (Markdown)</button>
+      <button class="btn" id="downloadReport">Baixar .md</button>
+      <button class="btn warn" id="printReport">Imprimir / PDF</button>
+      <button class="btn danger" id="resetAll">Zerar Projeto</button>
+      <span class="badge" id="exportInfo"></span>
+    </section>
+
+    <!-- Slides -->
+    <section class="panel slides" id="slides">
+      <h2>6) Slides da Apresentação</h2>
+      <div id="slidesWrap"></div>
+    </section>
+
+    <!-- Relatório -->
+    <section class="panel" id="reportPanel" style="display:none">
+      <h2>Relatório (Markdown)</h2>
+      <pre class="code mono" id="reportMD"></pre>
+    </section>
+  </main>
+
+  <div class="footer">Feito por Rafael • Projeto IHC (Heurísticas de Nielsen) • Salvo localmente no seu navegador</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
